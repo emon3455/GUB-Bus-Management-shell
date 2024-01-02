@@ -8,10 +8,10 @@ display_menu() {
     echo "---------*-- Operations Of Gub Bus Management --*--------"
     echo "---------*-------*--------------*---------------*--------"
     echo "1. Add Bus"
-    echo "2. Display Busses"
-    echo "3. Update Buss"
-    echo "4. Delete Buss"
-    echo "5. Start Scheduling Busses"
+    echo "2. Display Buses"
+    echo "3. Update Bus"
+    echo "4. Delete Bus"
+    echo "5. Start Scheduling Buses"
     echo "6. Exit"
     echo "---------*-------*--------------*---------------*--------"
 }
@@ -24,7 +24,7 @@ display_items() {
         echo "                                                         "
         echo "                                                         "
         echo "-------*--------*----------*-------*-----------"
-        echo "------------ All Busses Information -----------"
+        echo "------------ All Buses Information -----------"
         echo "-------*--------*----------*-------*-----------"
         cat "$items_file"
         
@@ -96,16 +96,16 @@ update_item() {
 delete_item() {
     echo "                                                         "
     echo "                                                         "
-    echo "###- Enter the serial number of the item to delete:"
+    echo "###- Enter the serial number of the Bus to delete:"
     read serial
 
     # Search for the item in the file
     if grep -q "Serial: $serial" "$items_file"; then
         # Delete the item from the file
         sed -i "/Serial: $serial/d" "$items_file"
-        echo "###- Item deleted successfully!"
+        echo "###- Bus deleted successfully!"
     else
-        echo "###- Item not found."
+        echo "###- Bus not found."
     fi
 }
 
@@ -169,6 +169,7 @@ while true; do
             echo "1. FCFS"
             echo "2. SJF"
             echo "3. Priority"
+            echo "###- Select Scheduling Type: "
             read scheduling_choice
 
             case $scheduling_choice in
