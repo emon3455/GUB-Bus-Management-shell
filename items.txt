@@ -1,6 +1,6 @@
-Name: Bus-1 | Serial: 1 | Source: MHK | Destination: PC | Distance: 10 | Priority: 2
-Name: Bus-6 | Serial: 2 | Source: PC | Destination: Kuril | Distance: 10 | Priority: 3 
-Name: Bus-3 | Serial: 3 | Source: SHAHVAG | Destination: PC | Distance: 18 | Priority: 1
-Name: Bus-4 | Serial: 4 | Source: Kuril | Destination: PC | Distance: 8 | Priority: 4
-Name: Bus-5 | Serial: 5 | Source: Farmgate | Destination: PC | Distance: 9 | Priority: 5 
-Name: Bus-6 | Serial: 6 | Source: PC | Destination: Abdullahpur | Distance: 13 | Priority: 6
+Name: Bus11 | Serial: 1 | Source: PC | Destination: Mirpur | Distance: 15 | Priority: 2 
+Name: Bus22 | Serial: 2 | Source: PC | Destination: Cantonment | Distance: 12 | Priority: 1 
+Name: Bus33 | Serial: 3 | Source: PC | Destination: Motijhil | Distance: 19 | Priority: 3 
+Name: Bus44 | Serial: 4 | Source: PC | Destination: Uttora | Distance: 11 | Priority: 5 
+Name: Bus55 | Serial: 5 | Source: PC | Destination: Narshindi | Distance: 18 | Priority: 4 
+Name: Bus66 | Serial: 6 | Source: PC | Destination: Airport | Distance: 9 | Priority: 6 

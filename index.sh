@@ -8,11 +8,12 @@ display_menu() {
     echo "---------*-- Operations Of Gub Bus Management --*--------"
     echo "---------*-------*--------------*---------------*--------"
     echo "1. Add Bus"
-    echo "2. Display Buses"
+    echo "2. Search Bus"
     echo "3. Update Bus"
     echo "4. Delete Bus"
-    echo "5. Start Scheduling Buses"
-    echo "6. Exit"
+    echo "5. Display All Buses"
+    echo "6. Start Scheduling Buses"
+    echo "4. Exit"
     echo "---------*-------*--------------*---------------*--------"
 }
 
@@ -62,43 +63,31 @@ update_item() {
     echo "###- Enter the serial number of the Bus to update:"
     read serial
 
-    # Search for the item in the file
+    # Search for the item in the file and update in-place
     if grep -q "Serial: $serial " "$items_file"; then
-        # Display the current information
+        echo "                                                         "
+        echo "--------------- Previous Data ---------------------------"
         grep "Serial: $serial " "$items_file"
-        
-        echo "###- Which information do you want to update?"
-        echo "1. Name"
-        echo "2. Source"
-        echo "3. Destination"
-        echo "4. Distance"
-        echo "5. Priority"
-        echo "###- Enter your choice: "
-        read update_choice
+        echo "---------------------------------------------------------"
+        echo "                                                         "
+        echo "###- Enter New name:"
+        read name
+        echo "###- Enter New source:"
+        read source
+        echo "###- Enter New destination:"
+        read destination
+        echo "###- Enter New Source To Destination distance:"
+        read distance
+        echo "###- Enter New Departure priority:"
+        read priority
 
-        case $update_choice in
-            1) echo "###- Enter New name:"; read name ;;
-            2) echo "###- Enter New source:"; read source ;;
-            3) echo "###- Enter New destination:"; read destination ;;
-            4) echo "###- Enter New Source To Destination distance:"; read distance ;;
-            5) echo "###- Enter New Departure priority:"; read priority ;;
-            *) echo "###- Invalid choice. No information updated."
-                return ;;
-            esac
-
-        # Update the specified information in the file
+        # Update the item in the file
         awk -v serial="$serial" -v name="$name" -v source="$source" -v destination="$destination" -v distance="$distance" -v priority="$priority" \
-        'BEGIN {OFS=FS="|"} $2 == " Serial: "serial" " { 
-            $1 = (name != "") ? "Name: " name" " : $1;
-            $3 = (source != "") ? " Source: " source" " : $3;
-            $4 = (destination != "") ? " Destination: " destination" " : $4;
-            $5 = (distance != "") ? " Distance: " distance" " : $5;
-            $6 = (priority != "") ? " Priority: " priority" " : $6;
-        } { print $0 }' "$items_file" > tmpfile && mv tmpfile "$items_file"
+            'BEGIN {OFS=FS="|"} $2 == " Serial: "serial" " { $1 = "Name: "name" "; $3 = " Source: "source" "; $4 = " Destination: "destination" "; $5 = " Distance: "distance" "; $6 = " Priority: "priority" "; } { print $0 }' "$items_file" > tmpfile && mv tmpfile "$items_file"
 
         echo "                                                         "
         echo "                                                         "
-        echo "###- Bus information updated successfully!"
+        echo "###- Bus updated successfully!"
         echo "                                                         "
         echo "                                                         "
     else
@@ -125,6 +114,30 @@ delete_item() {
         echo "###- Bus deleted successfully!"
     else
         echo "###- Bus not found."
+    fi
+}
+
+# Function to search for a single bus
+search_bus() {
+    echo "                                                         "
+    echo "                                                         "
+    echo "###- Enter the serial number of the Bus to search:"
+    read serial
+
+    # Search for the item in the file
+    if grep -q "Serial: $serial " "$items_file"; then
+        echo "                                                         "
+        echo "                                                         "
+        echo "-------*--------*----------*-------*-----------"
+        echo "------------ Searched Bus Information -----------"
+        echo "-------*--------*----------*-------*-----------"
+        grep "Serial: $serial " "$items_file"
+    else
+        echo "                                                         "
+        echo "                                                         "
+        echo "###- Bus not found....!!"
+        echo "                                                         "
+        echo "                                                         "
     fi
 }
 
@@ -178,10 +191,11 @@ while true; do
 
     case $choice in
         1) add_item ;;
-        2) display_items ;;
+        2) search_bus ;;
         3) update_item ;;
         4) delete_item ;;
-        5) 
+        5) display_items ;;
+        6) 
             echo "                                                         "
             echo "                                                         "
             echo "###- Select Algorithm You Want to Apply for Departure of Busses:"
@@ -198,7 +212,7 @@ while true; do
                 *) echo "Invalid scheduling algorithm." ;;
             esac
             ;;
-        6) echo "Thank You For Using Our System. Bye for Now...." && break ;;
+        7) echo "Thank You For Using Our System. Bye for Now...." && break ;;
         *) echo "Invalid choice. Please try again." ;;
     esac
 done
