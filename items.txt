@@ -1,6 +1,6 @@
 Name: Bus11 | Serial: 1 | Source: PC | Destination: Mirpur | Distance: 15 | Priority: 2 
 Name: Bus22 | Serial: 2 | Source: PC | Destination: Cantonment | Distance: 12 | Priority: 1 
-Name: Bus33 | Serial: 3 | Source: PC | Destination: Motijhil | Distance: 19 | Priority: 3 
+Name: Bus99 | Serial: 3 | Source: PC | Destination: Mohakhali | Distance: 10 | Priority: 3 
 Name: Bus44 | Serial: 4 | Source: PC | Destination: Uttora | Distance: 11 | Priority: 5 
 Name: Bus55 | Serial: 5 | Source: PC | Destination: Narshindi | Distance: 18 | Priority: 4 
 Name: Bus66 | Serial: 6 | Source: PC | Destination: Airport | Distance: 9 | Priority: 6 

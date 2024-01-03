@@ -13,7 +13,7 @@ display_menu() {
     echo "4. Delete Bus"
     echo "5. Display All Buses"
     echo "6. Start Scheduling Buses"
-    echo "4. Exit"
+    echo "7. Exit"
     echo "---------*-------*--------------*---------------*--------"
 }
 
